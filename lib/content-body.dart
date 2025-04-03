@@ -38,6 +38,10 @@ class _ContentBodyState extends State<ContentBody> {
       );
     }
 
+    void _goToYoutubePage(BuildContext context) {
+      Navigator.pushNamed(context, '/pagePlayer');
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Liste de tweets à partir d\'une liste d\'objet écrite'),
@@ -120,6 +124,10 @@ class _ContentBodyState extends State<ContentBody> {
               },
             ),
           ),
+          ElevatedButton(
+              onPressed: () => _goToYoutubePage(context),
+              child: Text('Aller vers le player')
+          )
         ],
       ),
     );

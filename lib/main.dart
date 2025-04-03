@@ -4,6 +4,7 @@ import 'package:twitter/page_single_tweet.dart';
 import 'package:twitter/tweet.dart';
 import 'package:twitter/tweet_api.dart';
 import 'package:twitter/tweet_form.dart';
+import 'package:twitter/youtube_page.dart';
 
 void main() {
   runApp(TPTwitterApp());
@@ -24,6 +25,7 @@ class TPTwitterApp extends StatelessWidget {
       routes : {
         '/' : (context) => TapBarPage(),
         '/pageSingleTweet' : (context) => SingleTweetPage(),
+        '/pagePlayer' : (context) => VideoFrame(),
       },
     );
   }
