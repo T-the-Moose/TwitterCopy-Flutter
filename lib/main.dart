@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:twitter/content-body.dart';
 import 'package:twitter/page_single_tweet.dart';
 import 'package:twitter/tweet.dart';
+import 'package:twitter/tweet_api.dart';
 import 'package:twitter/tweet_form.dart';
 
 void main() {
@@ -31,9 +32,9 @@ class TPTwitterApp extends StatelessWidget {
 class TapBarPage extends StatelessWidget {
 
   List<Tweet> tweets = [
-    Tweet('Mon 1er post', 'Fred', DateTime(2023, 5, 1, 12, 45)),
-    Tweet('Salut !', 'Manu', DateTime(2023, 11, 1, 17, 7)),
-    Tweet('Pas d\'accord', 'Géraldine', DateTime(2024, 2, 12, 14, 26)),
+    Tweet(1, "profil 1", 'Mon 1er post', 'Fred', DateTime(2023, 5, 1, 12, 45)),
+    Tweet(2, "profil 2", 'Salut !', 'Manu', DateTime(2023, 11, 1, 17, 7)),
+    Tweet(3, "profil 3", 'Pas d\'accord', 'Géraldine', DateTime(2024, 2, 12, 14, 26)),
   ];
 
   @override
@@ -52,7 +53,7 @@ class TapBarPage extends StatelessWidget {
             tabs: <Widget>[
               Tab(icon: Icon(Icons.list_outlined)),
               Tab(icon: Icon(Icons.format_color_text_outlined)),
-              Tab(icon: Icon(Icons.brightness_5_sharp)),
+              Tab(icon: Icon(Icons.api_sharp)),
             ],
           ),
         ),
@@ -60,7 +61,7 @@ class TapBarPage extends StatelessWidget {
           children: <Widget>[
             ContentBody(tweets),
             TweetFormPage(),
-            const Center(child: Text("Settings")),
+            TweetApiPage(),
           ],
         ),
         bottomNavigationBar: NavigationBar(

@@ -1,17 +1,35 @@
 class Tweet {
 
-  String _content;
-
+  int _id;
+  String _profile;
+  String _message;
   String _author;
+  DateTime _created_date;
 
-  DateTime _date;
+  Tweet(this._id, this._profile, this._message, this._author, this._created_date);
 
-  Tweet(this._content, this._author, this._date);
+  Tweet.fromJson(Map<String, dynamic> json): this(json['id'], json['profile'], json['message'], json['author'], DateTime.fromMillisecondsSinceEpoch((json['created_date'] ?? DateTime.now().millisecondsSinceEpoch) * 1000),);
 
-  DateTime get date => _date;
+  String getFormattedDate() {
+    return "${_created_date.day.toString().padLeft(2, '0')}/${_created_date.month.toString().padLeft(2, '0')}/${_created_date.year.toString().padLeft(2, '0')} ${_created_date.hour.toString().padLeft(2, '0')}:${_created_date.minute.toString().padLeft(2, '0')}";
+  }
 
-  set date(DateTime value) {
-    _date = value;
+  int get id => _id;
+
+  set id(int value) {
+    _id = value;
+  }
+
+  String get profil => _profile;
+
+  set profil(String value) {
+    _profile = value;
+  }
+  
+  DateTime get created_date => _created_date;
+
+  set created_date(DateTime value) {
+    _created_date = value;
   }
 
   String get author => _author;
@@ -20,15 +38,10 @@ class Tweet {
     _author = value;
   }
 
-  String get content => _content;
+  String get message => _message;
 
-  set content(String value) {
-    _content = value;
+  set message(String value) {
+    _message = value;
   }
-
-  String getFormattedDate() {
-    return "${_date.day.toString().padLeft(2, '0')}/${_date.month.toString().padLeft(2, '0')}/${_date.year.toString().padLeft(2, '0')} ${_date.hour.toString().padLeft(2, '0')}:${_date.minute.toString().padLeft(2, '0')}";
-  }
-
-
+  
 }

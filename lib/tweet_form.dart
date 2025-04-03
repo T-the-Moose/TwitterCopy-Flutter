@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:twitter/tweet.dart';
 
 class TweetFormPage extends StatefulWidget {
-  TweetFormPage();
+  const TweetFormPage();
 
   @override
   State<TweetFormPage> createState() => _TweetFormPageState();
 }
 
 class _TweetFormPageState extends State<TweetFormPage> {
+  int? _id;
+  String? _profil;
+  String? _message;
   String? _author;
-  String? _content;
   final _formKey = GlobalKey<FormState>();
 
   String? _validateField(String? value) {
@@ -24,7 +26,7 @@ class _TweetFormPageState extends State<TweetFormPage> {
   void _onSubmit() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      var tweet = Tweet(_content ?? '', _author ?? '', DateTime.now());
+      var tweet = Tweet(_id ?? 0, _profil ?? '', _message ?? '', _author ?? '', DateTime.now());
     }
   }
 
@@ -73,7 +75,7 @@ class _TweetFormPageState extends State<TweetFormPage> {
               ),
               validator: _validateField,
               onSaved: (value) {
-                _content = value;
+                _message = value;
               },
             ),
             Spacer(),
